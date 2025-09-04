@@ -7,39 +7,167 @@
   <meta name="description" content="A teen-led hackathon empowering girls and non-binary students to build with code in various tech domains." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .gradient { background: radial-gradient(1200px 600px at 10% 10%, rgba(217, 70, 239, .15), transparent),
-                            radial-gradient(1000px 500px at 90% 10%, rgba(59, 130, 246, .15), transparent),
-                            radial-gradient(1000px 500px at 50% 100%, rgba(16, 185, 129, .15), transparent); }
+    body { 
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+    
+    .gradient { 
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(217, 70, 239, .2), transparent),
+                  radial-gradient(1000px 500px at 90% 10%, rgba(59, 130, 246, .15), transparent),
+                  radial-gradient(1000px 500px at 50% 100%, rgba(16, 185, 129, .1), transparent);
+    }
+    
+    .rope-accent {
+      background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #fbbf24 100%);
+      background-size: 200% 200%;
+      animation: ropeShimmer 3s ease-in-out infinite;
+    }
+    
+    @keyframes ropeShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .hover-float {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-float:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-glow {
+      background: linear-gradient(135deg, rgba(51, 65, 85, 0.8) 0%, rgba(71, 85, 105, 0.6) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+    
+    .card-glow:hover {
+      border-color: rgba(236, 72, 153, 0.3);
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.1);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #ec4899, #f97316, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #ec4899, #d946ef);
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #f97316, #ec4899);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.6);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: rgba(51, 65, 85, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(71, 85, 105, 0.9);
+      border-color: rgba(236, 72, 153, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.6), rgba(249, 115, 22, 0.6), transparent);
+      margin: 2rem 0;
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100">
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden">
   <!-- Hero -->
-  <header class="gradient relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
-      <div class="md:flex md:items-center md:justify-between gap-10">
+  <header class="gradient relative overflow-hidden min-h-screen flex items-center">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-20 left-10 w-2 h-32 rope-accent rounded-full opacity-60 transform rotate-12"></div>
+      <div class="absolute top-40 right-20 w-2 h-24 rope-accent rounded-full opacity-40 transform -rotate-45"></div>
+      <div class="absolute bottom-32 left-1/4 w-1 h-20 rope-accent rounded-full opacity-50 transform rotate-45"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 relative z-10">
+      <div class="lg:flex lg:items-center lg:justify-between gap-12">
         <div class="max-w-2xl">
-          <p class="uppercase tracking-widest text-fuchsia-300/80 text-xs font-semibold">Hack Club & Athena present</p>
-          <h1 class="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">Synthesis Hackathon</h1>
-          <p class="mt-4 text-slate-300 text-lg max-w-xl">A one‑day, teen-led event empowering girls & non‑binary students to ship real projects in their various non-tech passions such as art, financial literacy, and neuroscience!.</p>
-          <p class="mt-3 text-slate-400">Orlando, FL • October 4 2025 • ~30 participants • Free to attend</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <!-- TODO: replace RSVP link -->
-            <a href="#rsvp" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-fuchsia-500 hover:bg-fuchsia-400 text-white font-semibold shadow-lg shadow-fuchsia-500/20">RSVP / Apply</a>
-            <a href="#details" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold">Event Details</a>
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-fuchsia-500/10 border border-fuchsia-400/20 mb-6">
+            <span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>
+            <p class="uppercase tracking-widest text-fuchsia-300/80 text-xs font-semibold">Hack Club & Athena present</p>
+          </div>
+          
+          <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <span class="text-gradient">Synthesis</span><br>
+            <span class="text-slate-100">Hackathon</span>
+          </h1>
+          
+          <p class="text-slate-300 text-xl leading-relaxed max-w-xl mb-4">A one‑day, teen-led event empowering girls & non‑binary students to ship real projects in their various non-tech passions such as art, financial literacy, and neuroscience!</p>
+          
+          <div class="flex flex-wrap items-center gap-6 text-slate-400 mb-8">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+              <span class="font-medium">Orlando, FL</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-pink-400 rounded-full"></div>
+              <span class="font-medium">October 4, 2025</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+              <span class="font-medium">~30 participants</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span class="font-medium">Free to attend</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="#rsvp" class="btn-primary inline-flex items-center justify-center px-8 py-4 rounded-2xl text-white font-bold text-lg">
+              RSVP / Apply
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+            <a href="#details" class="btn-secondary inline-flex items-center justify-center px-8 py-4 rounded-2xl text-white font-semibold text-lg">Event Details</a>
           </div>
         </div>
-        <div class="mt-10 md:mt-0 md:w-1/2">
-          <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-            <h2 class="text-xl font-bold">What you'll do</h2>
-            <ul class="mt-3 space-y-2 text-slate-300 text-sm list-disc pl-5">
-              <li>Team up and build a project in a day</li>
-              <li>Learn from short workshops (AI/ML, Graphic Design, SQL)</li>
-              <li>Get mentorship, ship, and demo on stage</li>
-              <li>Join a international community of passionate teenagers</li>
+        
+        <div class="mt-12 lg:mt-0 lg:w-1/2">
+          <div class="card-glow rounded-3xl p-8 hover-float">
+            <div class="flex items-center mb-4">
+              <div class="w-3 h-3 rope-accent rounded-full mr-3"></div>
+              <h2 class="text-2xl font-bold">What you'll do</h2>
+            </div>
+            <ul class="space-y-4 text-slate-300">
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-pink-400 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Team up and build a project in a day</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Learn from short workshops (AI/ML, Graphic Design, SQL)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Get mentorship, ship, and demo on stage</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Join an international community of passionate teenagers</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -47,81 +175,150 @@
     </div>
   </header>
 
+  <div class="section-divider"></div>
+
   <!-- Details -->
-  <section id="details" class="max-w-6xl mx-auto px-6 py-14">
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <p class="text-xs uppercase tracking-widest text-slate-400">When</p>
-        <p class="mt-2 text-lg font-semibold">October 4 2025 · Time: TBD</p>
+  <section id="details" class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Event Details</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-glow rounded-3xl p-8 hover-float text-center">
+        <div class="w-12 h-12 rope-accent rounded-2xl mx-auto mb-4 flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">When</p>
+        <p class="text-xl font-bold">October 4, 2025</p>
+        <p class="text-slate-400 mt-1">Time: TBD</p>
       </div>
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <p class="text-xs uppercase tracking-widest text-slate-400">Where</p>
-        <p class="mt-2 text-lg font-semibold">Downtown Orlando (Venue TBD)</p>
+      
+      <div class="card-glow rounded-3xl p-8 hover-float text-center">
+        <div class="w-12 h-12 rope-accent rounded-2xl mx-auto mb-4 flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">Where</p>
+        <p class="text-xl font-bold">Downtown Orlando</p>
+        <p class="text-slate-400 mt-1">Venue TBD</p>
       </div>
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <p class="text-xs uppercase tracking-widest text-slate-400">Who</p>
-        <p class="mt-2 text-lg font-semibold">~30 high school students (girls & non‑binary welcome)</p>
+      
+      <div class="card-glow rounded-3xl p-8 hover-float text-center">
+        <div class="w-12 h-12 rope-accent rounded-2xl mx-auto mb-4 flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+          </svg>
+        </div>
+        <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">Who</p>
+        <p class="text-xl font-bold">~30 Students</p>
+        <p class="text-slate-400 mt-1">Girls & non‑binary welcome</p>
       </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- Tracks -->
-  <section class="max-w-6xl mx-auto px-6 py-6">
-    <h2 class="text-2xl font-bold">Build Tracks</h2>
-    <div class="mt-4 grid md:grid-cols-3 gap-6">
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <h3 class="font-semibold">Financial Literacy</h3>
-        <p class="text-slate-300 text-sm mt-2">Using SQL to mimick real-world situations and careers</p>
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-4">Build Tracks</h2>
+    <p class="text-slate-400 text-center mb-12 max-w-2xl mx-auto">Choose your passion and build something amazing with code</p>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-glow rounded-3xl p-8 hover-float">
+        <div class="w-12 h-12 bg-green-500/20 rounded-2xl mb-4 flex items-center justify-center">
+          <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Financial Literacy</h3>
+        <p class="text-slate-300">Using SQL to mimic real-world situations and careers in finance</p>
       </div>
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <h3 class="font-semibold">Neuroscience</h3>
-        <p class="text-slate-300 text-sm mt-2">TBD</p>
+      
+      <div class="card-glow rounded-3xl p-8 hover-float">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-2xl mb-4 flex items-center justify-center">
+          <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Neuroscience</h3>
+        <p class="text-slate-300">Explore the fascinating world of brain science through code and data</p>
       </div>
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <h3 class="font-semibold">Graphic Design</h3>
-        <p class="text-slate-300 text-sm mt-2">TBD</p>
+      
+      <div class="card-glow rounded-3xl p-8 hover-float">
+        <div class="w-12 h-12 bg-pink-500/20 rounded-2xl mb-4 flex items-center justify-center">
+          <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Graphic Design</h3>
+        <p class="text-slate-300">Create stunning visuals and interactive designs with modern tools</p>
       </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- Schedule -->
-  <section class="max-w-6xl mx-auto px-6 py-6">
-    <h2 class="text-2xl font-bold">Schedule (Draft)</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-6 text-sm">
-      <ul class="space-y-2 bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
-        <p>Schedule TBD</p>
-      </ul>
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Schedule</h2>
+    <div class="max-w-2xl mx-auto">
+      <div class="card-glow rounded-3xl p-8 text-center">
+        <div class="w-16 h-16 rope-accent rounded-full mx-auto mb-4 flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Coming Soon</h3>
+        <p class="text-slate-400">Detailed schedule will be announced soon. Stay tuned!</p>
+      </div>
     </div>
   </section>
 
+  <div class="section-divider"></div>
+
   <!-- About & Equity Statement -->
-  <section class="max-w-6xl mx-auto px-6 py-6">
-    <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-      <h2 class="text-2xl font-bold">About</h2>
-      <p class="mt-3 text-slate-300">Synthesis is an Athena hackathon by Hack Club—youth‑led, hands‑on, and focused on shipping. We empower girls and non‑binary students to code..</p>
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="card-glow rounded-3xl p-8">
+      <h2 class="text-3xl font-bold mb-6">About Synthesis</h2>
+      <p class="text-slate-300 text-lg leading-relaxed">Synthesis is an Athena Initiative hackathon by Hack Club—youth‑led, hands‑on, and focused on shipping. We empower girls and non‑binary students to explore the intersection of technology and their passions, building real projects that matter to them and their communities.</p>
     </div>
   </section>
 
   <!-- CTA -->
-  <section id="rsvp" class="max-w-6xl mx-auto px-6 py-10">
-    <div class="rounded-2xl bg-fuchsia-500/10 border border-fuchsia-400/30 p-8 text-center">
-      <h2 class="text-2xl font-extrabold">Ready to join us?</h2>
-      <p class="mt-2 text-slate-200">RSVP to secure your spot. It’s free to attend; laptops welcome; beginners encouraged.</p>
-      <!-- TODO: replace with your actual form link (Tally/Typeform/Google Form) -->
-      <a href="https://forms.gle/your-form" class="mt-4 inline-flex items-center justify-center px-6 py-3 rounded-xl bg-fuchsia-500 hover:bg-fuchsia-400 text-white font-semibold shadow-lg shadow-fuchsia-500/20">Open RSVP Form</a>
+  <section id="rsvp" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-fuchsia-500/20 via-pink-500/10 to-orange-500/20 border border-fuchsia-400/30 p-12 text-center">
+      <div class="relative z-10">
+        <h2 class="text-4xl font-black mb-4">
+          <span class="text-gradient">Ready to join us?</span>
+        </h2>
+        <p class="text-slate-200 text-xl mb-8 max-w-2xl mx-auto">RSVP to secure your spot. It's free to attend; laptops welcome; beginners encouraged.</p>
+        <a href="https://forms.gle/your-form" class="btn-primary inline-flex items-center justify-center px-10 py-5 rounded-2xl text-white font-bold text-xl">
+          Open RSVP Form
+          <svg class="ml-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Background decoration -->
+      <div class="absolute top-4 right-4 w-24 h-24 rope-accent rounded-full opacity-20"></div>
+      <div class="absolute bottom-4 left-4 w-16 h-16 rope-accent rounded-full opacity-30"></div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-      <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-6">
-        <h3 class="font-semibold">Contact</h3>
-        <p class="mt-2 text-slate-300 text-sm">Organizer: Mikayla Solomon · Hack Club Athena</p>
-        <p class="text-slate-400 text-sm">Email: <a class="underline" href="mailto:mikaylasolomon68@gmail.com">mikaylasolomon68@gmail.com</a></p>
-      </div>
+  <section class="max-w-7xl mx-auto px-6 pb-16">
+    <div class="card-glow rounded-3xl p-8">
+      <h3 class="text-xl font-bold mb-4">Contact</h3>
+      <p class="text-slate-300 mb-2">Organizer: Mikayla Solomon ꨄ︎ Hack Club & Athena</p>
+      <p class="text-slate-400">Email: <a class="text-fuchsia-400 hover:text-fuchsia-300 transition-colors" href="mailto:mikaylasolomon68@gmail.com">mikaylasolomon68@gmail.com</a></p>
     </div>
-    <p class="mt-8 text-xs text-slate-500">Hack Club is a 501(c)(3) nonprofit. © 2025</p>
-    <p class="mt-9 text-xs text-slate-500">Made with ꨄ︎ by the Sythensis Team</p>
+    
+    <div class="mt-12 text-center">
+      <p class="text-xs text-slate-500 mb-2">Hack Club is a 501(c)(3) nonprofit. © 2025</p>
+      <p class="text-xs text-slate-500">Made with ꨄ︎ by the Synthesis Team</p>
+    </div>
   </section>
 </body>
 </html>
